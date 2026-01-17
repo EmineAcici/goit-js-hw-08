@@ -83,16 +83,14 @@ for (const img of images) {
 }
 
 gallery.innerHTML = galleryImages.join("");
-const galleryLink = document.querySelectorAll(".gallery-link");
-galleryLink.forEach((link) => {
-  link.addEventListener("click", (evt) => evt.preventDefault());
-});
+
 gallery.addEventListener("click", openModal);
 
 function openModal(event) {
   if (event.target.tagName !== "IMG") {
     return;
   }
+  event.preventDefault();
   const src = event.target.dataset.source;
   const alt = event.target.alt;
   const instance = basicLightbox.create(
